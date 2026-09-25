@@ -1,4 +1,6 @@
 # Mental Wellness App
- Mental Wellness App Created for University of Utah Capstone 2024 as a part of a four person team
+
+Mental Wellness App Created for University of Utah Capstone 2024 as a part of a four person team
 The app was primarily focused on creating an environment that encouraged users to engage in mindfulness practices and walks. The app contained several sections including a Map portion that algorithmically found safe and accessible trails, mindfulness exercises, chatting functionality, and a social media / posting component. Data was displayed cross platform using React Native and NodeJS for the frontend and backend with a server/database in SQL. 
+
 My focus on this project was to create the mapping functionality by displaying google maps data to the user. Routes were stored as points of coordinates on the apps database and generated from trails on open streeet maps. The app was able to save, guide, and recommend walks to users. 
