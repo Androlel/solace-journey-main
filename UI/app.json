@@ -1,0 +1,40 @@
+{
+  "expo": {
+    "name": "SolaceJourney",
+    "slug": "SolaceJourney",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/SJ_logo.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/SJ_logo.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/SJ_logo.png",
+        "backgroundColor": "#ffffff"
+      },
+      "permissions": ["INTERNET"]
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins" : [
+      [
+        "expo-image-picker", 
+        {
+          "photosPermission": "Allow Solace Journey to access your photos",
+          "cameraPermission": "Allow Solace Journey to access your camera"
+        }
+      ]
+    ]
+  }
+}

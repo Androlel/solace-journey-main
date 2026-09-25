@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="main.css">
+        <link rel="icon" type="image/x-icon" href="SJfavicon.ico">
+        <script src="admin.js"></script>
+        <title>Sign Up</title>
+    </head>
+    <body>
+        <button><a href="javascript:window.history.back();">Head Back</a></button>
+        <form id="adminLogin" action="http://192.168.1.220:10000/register" method="post">
+            <p>Sign Up</p>
+            <input type="hidden" name="admin" value="1">
+            <label for="emailID">Email</label>
+            <input type="email" name="email" id="emailID" class="inputs">
+            <br>
+            <label for="pwd">Password</label>
+            <input type="password" name="pwd" id="pwd" class="inputs">
+            <br>
+            <label for="positive words">What positive feeling do you wish to accomplish on your solace journey?</label>
+            <select name="positiveList" id="positive words" class="inputs">
+                <option value="">--Please choose a positive word--</option>
+                <option value="Cute">Cute</option>
+                <option value="Amazing">Amazing</option>
+                <option value="Cheerful">Cheerful</option>
+                <option value="Polite">Polite</option>
+                <option value="Excellent">Excellent</option>
+            </select>
+            <input type="submit" value="Create Admin Account">
+        </form>    
+    </body>
+    
+</html>

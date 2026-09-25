@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="main.css">
+        <link rel="icon" type="image/x-icon" href="SJfavicon.ico">
+        <script src="admin.js"></script>
+        <title>SJ Edit</title>
+    </head>
+    <body>
+        <div id="sidenav">
+            <a href="javascript:void(0)" onclick="closeNav()" id="closeButton">&times;</a>
+            <a href="/adminSJAdd">Add</a>
+            <a href="#">Edit</a>
+            <a href="/adminSJDelete">Delete</a>
+            <a href="/adminSJReport">Report</a>
+            <a href="/logout?admin=1">Logout</a>
+        </div>
+        <main id="main">
+            <section>
+                <div class="adminC">
+                    <p id="admin"><%- administrator %></p>
+                    <span onclick="openNav()">
+                        <img src="<%- avatarPicture %>" alt="Administrator Avatar Image" id="avatar">
+                    </span>
+                </div>
+                <div class="adminInsert">
+                    <button class="tablink" onclick="openTab(event, 'Post')" id="defaultOpen">Posts</button>
+                    <button class="tablink" onclick="openTab(event, 'Activity')">Activities</button>
+                </div>
+            </section>
+            <select name="activityEdit" id="activity_edit_list" class="tabcontent" autofocus onchange="fillEditContent(event)">
+                <option value="" selected>Which Activity do you want to edit?</option>
+                <% for (let i = 0; i < activities.length; i++) { %>
+                <option value="<%- activities[i]['ID'] %>"><%- activities[i]['Name'] %></option>
+                <% } %>
+            </select>
+            <% for (let i = 0; i < posts.length; i++) { %>
+            <% const {'Post Content': content, 'Post Image': image} = posts[i] %>
+            <form class="tabcontent Post post_change">
+                <input type="hidden" name="admin" value="<%- administrator %>" id="adminName">
+                <label for="post content">Post</label>
+                <textarea name="content" id="post content" cols="30" rows="10" required onchange="inputChanged(event)"><%= content %></textarea>
+                <p id="post content error" class="errors" style="display: none;">Must have content in post</p>
+                <br>
+                <label for="postImage">Optional Post Main Picture:</label>
+                <input type="file" id="postImage" name="postImage" accept=".jpeg, .png, .ico">
+                <% if (image !== null) { %>
+                <label for="post_image_insert">Inserted Post Image</label>
+                <img src="<%= image['buffer'] !== undefined ? image['buffer'] : '' %>" alt="Inserted Post Image" id="post_image_insert">
+                <p>Post Image Filename: <%= image['filename'] !== undefined ? image['filename'] : '' %></p>
+                <% } %>
+                <button class="post_button" onclick="handleEdit(event)" style="display: block;">Edit</button>
+            </form>
+            <% } %>
+            <form id="Activity" class="tabcontent">
+                <label for="activityName">Activity Name:</label>
+                <input type="text" name="name" id="activityName" required>
+                <p id="activity name error" class="errors" style="display: none;">Activity must have a name</p>
+                <br>
+                <label for="activity content">Activity Content</label>
+                <textarea name="contents" id="activity content" cols="30" rows="10" required></textarea>
+                <p id="activity content error" class="errors" style="display: none;">Activity content must have content</p>
+                <br>
+                <label for="mainimage">Main Image File</label>
+                <div>
+                    <input type="file" name="mainImage" id="mainimage" required>
+                    <button class="xIcon" onclick="event.preventDefault(); document.getElementById('mainimage').value = '';">
+                        &#10006;
+                    </button>
+                </div>
+                <label for="main_image">Inserted Main Image File</label>
+                <img src="" alt="Inserted Main Activity Image File" id="main_image">
+                <p id="main_filename">Main Image Filename: </p>
+                <p id="activity main image error" class="errors" style="display: none;">Main image must be provided</p>
+                <br>
+                <label for="mainvideo">Main Video Link</label>
+                <input type="url" name="mainVideo" id="mainvideo" pattern="https://.*" required>
+                <p id="activity main video error" class="errors" style="display: none;">Must contain https</p>
+                <br>
+                <label for="main_video">Inserted Main Video</label>
+                <iframe src="" alt="Inserted Main Activity Video" id="main_video"></iframe>
+                <br>
+                <label for="imageList"><u>Image List (Add each image step by step)</u></label>
+                <div id="imageList"></div>
+                <button id="imageAdd" onclick="addMedia(event)">
+                    &#43;
+                    Add image file
+                </button>
+                <br>
+                <label for="videoList"><u>Video List</u></label>
+                <div id="videoList"></div>
+                <button id="videoAdd" onclick="addMedia(event)">
+                    &#43;
+                    Add video link
+                </button>
+            </form>
+            <button id="submit" onclick="handleEdit(event)">Edit</button>
+        </main>
+        <div id="successModal">
+            <div class="successIcon">
+                <i>&#10003;</i>
+            </div>
+            <h1 id="modalBody"></h1>
+        </div>
+        <script>
+            document.getElementById("defaultOpen").click()
+        </script>    
+    </body>
+</html>

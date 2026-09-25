@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="main.css">
+        <script src="admin.js"></script>
+        <title>SJ Administration</title>
+    </head>
+    <body>
+        <!-- Use username and avatar template here, then use res.render to do the inserting -->
+        <section>
+            <p>Insert data into DB</p>
+        </section>
+        <div class="adminInsert">
+            <button id="posts">Posts</button>
+            <button id="activities">Activities</button>
+            <button id="reports">Reports</button>
+        </div>
+        <form action="http://192.168.1.220:10000/api/posts/post" method="post" id="Post" class="tabcontent">
+            <input type="text" name="admin" id="adminName">
+            <label for="post content">Insert Post Content</label>
+            <textarea name="content" id="post conent" cols="30" rows="10" form="Post" required></textarea>
+            <!-- put optional post picture here -->
+        </form>
+        <form action="http://192.168.1.220:10000/api/activities" method="post" enctype="multipart/form-data" id="Activity" class="tabcontent">
+            <input type="text" name="admin" id="adminName">
+            <label for="activityName">Activity Name:</label>
+            <input type="text" name="name" id="activityName">
+            <br>
+            <label for="activity content">Insert Activity Content</label>
+            <textarea name="content" id="activity content" cols="30" rows="10" form="Activity" required></textarea>
+            <br>
+            <input type="file" name="" id="">
+        </form>
+        <input type="submit" value="Submit">
+        <!-- Add tab that displays list of reports -->            
+    </body>
+    
+</html>
+<!--
+Notes:
+
+-->

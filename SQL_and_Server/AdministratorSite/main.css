@@ -1,0 +1,267 @@
+.adminInsert {
+    background-color: #47362C;
+    flex: auto;
+}
+
+.adminInsert button {
+    padding: 14px 16px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: 0.3s;
+}
+
+.adminInsert button:hover {
+    background-color: #5C412E;
+}
+
+.adminInsert button.active {
+    background-color: #265656;
+}
+
+.tabcontent {
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+    display: block;
+    background-color: #AF773E;
+}
+
+body {
+    background-image: url('Login-img.png');
+    background-repeat: no-repeat;
+    background-size: 100vw 100vh;
+}
+
+
+#adminLoginPage {
+    border: 3px solid #265656;
+    background-color: white;
+    position: absolute;
+    top: 30%;
+    left: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#adminLoginPage form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#adminLoginPage button a {
+    text-decoration: none;
+    color: black;
+    padding-bottom: 1rem;
+}
+
+#adminLogin > *, #adminLoginPage {
+    padding: 0.5rem;
+}
+
+input[type="submit"], #imageAdd, #videoAdd, .xIcon, #avatar {
+    cursor: pointer;
+}
+
+#avatar {
+    border-radius: 50%;
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    display: inline;
+}
+
+#admin {
+    display: inline;
+}
+
+.loginC {
+    margin: 1.5rem;
+}
+
+.inputs {
+    border-color: #265656;
+}
+
+.inputs:focus {
+    border: 2px solid #AF773E;
+    outline: none;
+}
+
+#imageList, #videoList {
+    list-style-type: none;
+}
+
+.image, .video {
+    margin-bottom: 1rem;
+}
+
+#imageAdd, #videoAdd, .xIcon {
+    background: transparent;
+    width: auto;
+    height: auto;
+    box-shadow: none;
+    border: none;
+    color: #efb85d;
+}
+
+#imageAdd:hover, #videoAdd:hover {
+    text-decoration: underline;
+}
+
+label, textarea {
+    display: block;
+}
+
+label {
+    margin: 1rem auto 1rem auto;
+}
+
+input[type="button"] {
+    margin-top: 1rem;
+}
+
+.adminC {
+    display: flex;
+    column-gap: 1.5rem;
+    justify-content: flex-end;
+}
+
+#submit, .post_button {
+    margin-top: 1rem;
+    font-size: 2rem;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: green;
+    background-color: #265656;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 7px #999;
+}
+
+#submit:active, .post_button:active {
+    background-color: #efb85d;
+    box-shadow: 0 3px #666;
+    transform: translateY(4px);
+}
+
+.post_button {
+    margin-bottom: 1rem;
+}
+
+.errors {
+    border: 2px dotted red;
+}
+
+a {
+    text-decoration: none;
+}
+
+#admin {
+    font: 1rem "'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif", 'Franklin Gothic Medium';
+    color: blue;
+}
+
+#main {
+    transition: margin-right 0.5s;
+}
+
+#sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: #47362C;
+    overflow-x: hidden;
+    padding-top: 60px;
+    transition: 0.5s;
+}
+
+#sidenav a {
+    font-size: 25px;
+    color: #efb85d;
+    display: block;
+    transition: 0.3s;
+    padding: 8px 8px 8px 32px;
+}
+
+#sidenav a:hover {
+    color: white;
+}
+
+#sidenav #closeButton {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+#sidenav a[href="#"] {
+    color: blue;
+}
+
+th, td {
+    padding: 20px;
+}
+
+#successModal {
+    width: 25rem;
+    height: 6rem;
+    background-color: #eee;
+    position: fixed;
+    top: 10%;
+    left: 38%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 1rem;
+    box-shadow: 0 1rem 3rem black;
+    visibility: hidden;
+    transform: scale(0);
+    opacity: 0;
+}
+
+#successModal h1 {
+    font-size: 2.5rem;
+    color: #265656;
+}
+
+.successIcon {
+    width: 4rem;
+    height: 4rem;
+    position: absolute;
+    top: -3rem;
+    border-radius: 50%;
+    background-color: #265656;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0.5rem 2rem #efb85d;
+}
+
+.successIcon i {
+    font-size: 2.7rem;
+    color: #fff;
+}
+
+.openSuccessModal#successModal {
+    transform: scale(1);
+    opacity: 1;
+    visibility: visible;
+    transition: all 0.5s;
+}
+
+.inserted_video {
+    margin-bottom: 2rem;
+    border-bottom: 2px solid black;
+}
+
+.Post {
+    border-bottom: 4px solid black;
+}

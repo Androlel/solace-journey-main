@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="main.css">
+        <link rel="icon" type="image/x-icon" href="SJfavicon.ico">
+        <script src="admin.js"></script>
+        <title>SJ Report</title>
+    </head>
+    <body>
+        <div id="sidenav">
+            <a href="javascript:void(0)" onclick="closeNav()" id="closeButton">&times;</a>
+            <a href="http://localhost:10000/adminSJAdd">Add</a>
+            <a href="http://localhost:10000/adminSJEdit">Edit</a>
+            <a href="http://localhost:10000/adminSJDelete">Delete</a>
+            <a href="#">Report</a>
+            <a href="http://localhost:10000/logout?admin=1">Logout</a>
+        </div>
+        <main id="main">
+            <section>
+                <div class="adminC">
+                    <p id="admin"><%- administrator %></p>
+                    <span onclick="openNav()">
+                        <img src="<%- avatarPicture %>" alt="Administrator Avatar Image" id="avatar">
+                    </span>
+                </div>
+                <div class="adminInsert">
+                    <button class="tablink" onclick="openTab(event, 'Comments')" id="defaultOpen">Comments</button>
+                    <button class="tablink" onclick="openTab(event, 'Replies')">Replies</button>
+                </div>
+            </section>
+            <table class="tabcontent" id="Comments">
+                <thead>
+                    <tr>
+                        <th scope="col">Reported User</th>
+                        <th scope="col">Comment Content</th>
+                        <th scope="col">Reason</th>
+                        <th scope="col">Keep/Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for (let i = 0; i < moderations.length; i++) { %>
+                    <% const {'comment user': user, 'Comment Content': content, Reason} = moderations[i] %>
+                    <% if (user != null && content != null) { %>
+                    <tr>
+                        <th scope="row"><%= user %></th>
+                        <td><%= content %></td>
+                        <td><%= Reason %></td>
+                        <td>
+                            <button class="report_validation">&check;</button>
+                            <button class="report_validation">&times;</button>
+                        </td>
+                    </tr>
+                    <% } %>
+                    <% } %>    
+                </tbody>
+            </table>
+            <table class="tabcontent" id="Replies">
+                <thead>
+                    <tr>
+                        <th scope="col">Reported User</th>
+                        <th scope="col">Reply Content</th>
+                        <th scope="col">Reason</th>
+                        <th scope="col">Keep/Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for (let i = 0; i < moderations.length; i++) { %>
+                    <% const {'reply user': user, 'Reply Content': content, Reason} = moderations[i] %>
+                    <% if (user != null && content != null) { %>
+                    <tr>
+                        <th scope="row"><%= user %></th>
+                        <td><%= content %></td>
+                        <td><%= Reason %></td>
+                        <td>
+                            <button class="report_validation">&check;</button>
+                            <button class="report_validation">&times;</button>
+                        </td>
+                    </tr>
+                    <% } %>
+                    <% } %>    
+                </tbody>
+            </table>
+        </main>
+        
+        <script>
+            document.getElementById("defaultOpen").click()
+        </script>    
+    </body>
+    
+</html>

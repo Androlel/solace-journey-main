@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="main.css">
+        <link rel="icon" type="image/x-icon" href="SJfavicon.ico">
+        <script src="admin.js"></script>
+        <title>SJ Delete</title>
+    </head>
+    <body>
+        <div id="sidenav">
+            <a href="javascript:void(0)" onclick="closeNav()" id="closeButton">&times;</a>
+            <a href="/adminSJAdd">Add</a>
+            <a href="/adminSJEdit">Edit</a>
+            <a href="#">Delete</a>
+            <a href="/adminSJReport">Report</a>
+            <a href="/logout?admin=1">Logout</a>
+        </div>
+        <main id="main">
+            <section>
+                <div class="adminC">
+                    <p id="admin"><%- administrator %></p>
+                    <span onclick="openNav()">
+                        <img src="<%- avatarPicture %>" alt="Administrator Avatar Image" id="avatar">
+                    </span>
+                </div>
+                <div class="adminInsert">
+                    <button class="tablink" onclick="openTab(event, 'Post')" id="defaultOpen">Posts</button>
+                    <button class="tablink" onclick="openTab(event, 'Activity')">Activities</button>
+                </div>
+            </section>
+            <select name="activityEdit" id="activity_edit_list" class="tabcontent" autofocus onchange="fillEditContent(event)">
+                <option value="" selected>Which Activity do you want to edit?</option>
+                <% for (let i = 0; i < activities.length; i++) { %>
+                <option value="<%- activities[i]['ID'] %>"><%- activities[i]['Name'] %></option>
+                <% } %>
+            </select>
+            <% for (let i = 0; i < posts.length; i++) { %>
+            <% const {'Post Content': content, 'Post Image': image, postID} = posts[i] %>
+            <form class="tabcontent Post">
+                <label for="post content">Post</label>
+                <textarea name="content" id="post content" cols="30" rows="10" readonly><%= content %></textarea>
+                <br>
+                <label for="postImage">Optional Post Main Picture:</label>
+                <% if (image !== null) { %>
+                <img src="<%= image['buffer'] !== undefined ? image['buffer'] : '' %>" alt="Inserted Post Image" id="post_image_insert">
+                <p id="post_filename_<%= postID %>">Post Image Filename: <%= image['filename'] !== undefined ? image['filename'] : '' %></p>
+                <% } %>
+                <button class="post_button" onclick="handleDelete(event)" data-post="<%- postID %>" style="display: block;">Delete</button>
+            </form>
+            <% } %>
+            <form id="Activity" class="tabcontent">
+                <label for="activityName">Activity Name:</label>
+                <input type="text" name="name" id="activityName" readonly>
+                <br>
+                <label for="activity content">Activity Content</label>
+                <textarea name="contents" id="activity content" cols="30" rows="10" readonly></textarea>
+                <br>
+                <label for="main_image">Inserted Main Image File</label>
+                <img src="" alt="Inserted Main Activity Image File" id="main_image">
+                <p id="main_filename">Main Image Filename: </p>
+                <br>
+                <label for="mainvideo">Main Video Link</label>
+                <input type="url" name="mainVideo" id="mainvideo" pattern="https://.*" readonly>
+                <br>
+                <label for="main_video">Inserted Main Video</label>
+                <iframe src="" alt="Inserted Main Activity Video" id="main_video"></iframe>
+                <br>
+                <label for="imageList">Image List (Add each image step by step)</label>
+                <div id="imageList"></div>
+                <br>
+                <label for="videoList">Video List</label>
+                <div id="videoList"></div>
+            </form>
+            <button id="submit" onclick="handleDelete(event)">Delete</button>
+        </main>
+        <div id="successModal">
+            <div class="successIcon">
+                <i>&#10003;</i>
+            </div>
+            <h1 id="modalBody"></h1>
+        </div>
+        <script>
+            document.getElementById("defaultOpen").click()
+        </script>    
+    </body>
+</html>

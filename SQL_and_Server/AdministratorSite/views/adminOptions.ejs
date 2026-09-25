@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="main.css">
+        <link rel="icon" type="image/x-icon" href="SJfavicon.ico">
+        <script src="admin.js"></script>
+        <title>SJ Options</title>
+    </head>
+    <body>
+        <div class="adminC">
+            <p id="admin"><%- administrator %></p>
+            <img src="<%- avatarPicture %>" alt="Administrator Avatar Image" id="avatar">
+        </div>
+        <div>
+            <p>Choose your task</p>
+            <button><a href="http://192.168.1.220:10000/adminAdd">Add</a></button>
+            <button><a href="http://192.168.1.220:10000/adminEdit">Edit</a></button>
+            <button><a href="http://192.168.1.220:10000/adminDelete">Delete</a></button>
+            <button><a href="http://192.168.1.220:10000/report">Report</a></button>
+        </div>
+    </body>
+    
+</html>

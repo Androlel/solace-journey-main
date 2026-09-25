@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="main.css">
+        <link rel="icon" type="image/x-icon" href="SJfavicon.ico">
+        <script src="admin.js"></script>
+        <title>SJ Administration</title>
+    </head>
+    <body>
+        <!-- Use username and avatar template here, then use res.render to do the inserting -->
+        <div id="sidenav">
+            <a href="javascript:void(0)" onclick="closeNav()" id="closeButton">&times;</a>
+            <a href="#">Add</a>
+            <a href="#">Edit</a>
+            <a href="#">Delete</a>
+            <a href="http://192.168.1.220:10000/adminReport">Report</a>
+        </div>
+        <main id="main">
+            <section>
+                <div class="adminC">
+                    <p id="admin"><%- administrator %></p>
+                    <span onclick="openNav()">
+                        <img src="<%- avatarPicture %>" alt="Administrator Avatar Image" id="avatar">
+                    </span>
+                </div>
+                <div class="adminInsert">
+                    <button class="tablink" onclick="openTab(event, 'Post')" id="defaultOpen">Posts</button>
+                    <button class="tablink" onclick="openTab(event, 'Activity')">Activities</button>
+                </div>
+            </section>
+            <form id="Post" class="tabcontent">
+                <input type="hidden" name="admin" value="<%- administrator %>" id="adminName">
+                <label for="post content">Post</label>
+                <textarea name="content" id="post content" class="inputs" cols="30" rows="10" required></textarea>
+                <p id="post content error" class="errors" style="display: none;">Put in post content</p>
+                <br>
+                <label for="postImage">Optional Post Main Picture:</label>
+                <input type="file" id="postImage" name="postImage" accept=".jpeg, .png, .ico">
+            </form>
+            <form id="Activity" class="tabcontent">
+                <label for="activityName">Activity Name:</label>
+                <input type="text" name="name" id="activityName" class="inputs" required>
+                <p id="activity name error" class="errors" style="display: none;">Must enter activity name</p>
+                <br>
+                <label for="activity content">Activity Content</label>
+                <textarea name="contents" id="activity content" class="inputs" cols="30" rows="10" required 
+                oninvalid="setCustomValidity('Must enter activity contents')"
+                on></textarea>
+                <p id="activity content error" class="error_message" style="display: none;">Activity content must have content</p>
+                <br>
+                <label for="mainimage">Main Image File</label>
+                <div>
+                    <input type="file" name="mainImage" id="mainimage" required>
+                    <button class="xIcon" onclick="event.preventDefault(); document.getElementById('mainimage').value = '';">
+                        &#10006;
+                    </button>
+                </div>
+                
+                <p id="activity main image error" class="errors" style="display: none;">Provide an image for the activity</p>
+                <br>
+                <label for="mainvideo">Main Video Link</label>
+                <input type="url" name="mainVideo" id="mainvideo" class="inputs" pattern="https://.*" required>
+                <p id="activity main video error" class="errors" style="display: none;">Provide a video link for the activity or provide https links</p>
+                <br>
+                <label for="imageList">Image List (Add each image step by step)</label>
+                <!-- if image list has items, but video list doesn't, then don't upload the video list no matter how many there are -->
+                <div id="imageList"></div>
+                <button id="imageAdd" onclick="addMedia(event)">
+                    &#43;
+                    Add image file
+                </button>
+                <br>
+                <label for="videoList">Video List</label>
+                <!-- if video list has items, but image list doesn't, then don't upload the image list no matter how many there are -->
+                <div id="videoList"></div>
+                <button id="videoAdd" onclick="addMedia(event)">
+                    &#43;
+                    Add video link
+                </button>
+                <!-- not allowed to upload both lists -->
+                <!-- if both empty, show both add links -->
+            </form>
+            <button id="submit" onclick="handleSubmit(event)"></button>
+            <p id="submission" style="display: none;">Submission Complete</p>
+        </main>
+        
+        <script>
+            document.getElementById("defaultOpen").click()
+        </script>    
+    </body>
+    
+</html>
+<!--
+Notes:
+
+-->
