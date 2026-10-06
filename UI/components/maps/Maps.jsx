@@ -76,7 +76,7 @@ const Maps = () => {
     "Bonneville Shoreline Trail",
   ];
 
-  const apiKey = "AIzaSyDhy3Qxl4MlDXmmL17ghu5HB4gwU_mBO_E";
+  const apiKey = "KEY";
   const minDistance = 500;
 
   const fromActivity = useRoute();
