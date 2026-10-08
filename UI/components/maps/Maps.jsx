@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+Yimport React, { useRef, useState, useEffect } from "react";
 import MapView, { Marker } from "react-native-maps";
 import {
   View,
@@ -626,7 +626,7 @@ const traceRoute = () => {
               destination={destination}
               waypoints={waypoints.map((wp) => wp)}
               optimizeWaypoints={false}
-              apikey="AIzaSyDhy3Qxl4MlDXmmL17ghu5HB4gwU_mBO_E"
+              apikey="KEY"
               strokeColor="#6644ff"
               strokeWidth={4}
               mode={"WALKING"}
