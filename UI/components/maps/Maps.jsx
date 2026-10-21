@@ -1,4 +1,4 @@
-Yimport React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import MapView, { Marker } from "react-native-maps";
 import {
   View,
